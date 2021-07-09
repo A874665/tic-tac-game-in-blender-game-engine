@@ -1,0 +1,227 @@
+import bge
+import time
+scene = bge.logic.getCurrentScene()
+from GameLogic import globalDict as G
+obj = scene.objects
+keyboard = bge.logic.keyboard
+JUST_ACTIVATED = bge.logic.KX_INPUT_JUST_ACTIVATED
+
+if "init" not in G:
+    G["theBoard"] = {
+                obj['7']:' ',obj['8']:' ',obj['9']:' ',
+                obj['4']:' ',obj['5']:' ',obj['6']:' ',
+                obj['1']:' ',obj['2']:' ',obj['3']:' '}
+    G['xt']=scene.addObject('X_turn')
+    G['x'] = None
+    G['count']=0
+    G["init"] = True
+    obj["Plane"].worldPosition[2] = -1
+    obj['1'].color = [0.0,1.0,0.0,1.0]
+
+def check(x):
+    t = 'X'
+    if str(x) == str(t):
+        x=scene.addObject('0')
+        if 'xt' in G:
+            G['xt'].endObject()
+            G['xt'] = scene.addObject('X_turn')
+    else:
+        x=scene.addObject('X')
+        if 'xt' in G:
+            G['xt'].endObject()
+            G['xt'] = scene.addObject('0_turn')
+    return x, G['xt']
+
+def winner(w):
+    if str(w) == str(obj['X']):
+        G['W']=scene.addObject('Won')
+        G['V']=scene.addObject('X')
+    else:
+        G['W']=scene.addObject('Won')
+        G['V']=scene.addObject('0')
+    G['count'] = 10
+    return G['W'], G['V']    
+
+def game():
+        if JUST_ACTIVATED in keyboard.inputs[bge.events.PAD1].queue:
+            if G["theBoard"][obj['1']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['1'].worldPosition[0]
+                x.worldPosition[1]=obj['1'].worldPosition[1]
+                x.worldPosition[2]=obj['1'].worldPosition[2]
+                G["theBoard"][obj['1']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")
+              
+        elif JUST_ACTIVATED in keyboard.inputs[bge.events.PAD2].queue :
+            if G["theBoard"][obj['2']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['2'].worldPosition[0]
+                x.worldPosition[1]=obj['2'].worldPosition[1]
+                x.worldPosition[2]=obj['2'].worldPosition[2]
+                G["theBoard"][obj['2']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")
+
+        elif JUST_ACTIVATED in keyboard.inputs[bge.events.PAD3].queue :
+            if G["theBoard"][obj['3']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['3'].worldPosition[0]
+                x.worldPosition[1]=obj['3'].worldPosition[1]
+                x.worldPosition[2]=obj['3'].worldPosition[2]
+                G["theBoard"][obj['3']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")
+
+        elif JUST_ACTIVATED in keyboard.inputs[bge.events.PAD4].queue:
+            if G["theBoard"][obj['4']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['4'].worldPosition[0]
+                x.worldPosition[1]=obj['4'].worldPosition[1]
+                x.worldPosition[2]=obj['4'].worldPosition[2]
+                G["theBoard"][obj['4']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")           
+
+        elif JUST_ACTIVATED in keyboard.inputs[bge.events.PAD5].queue :
+            if G["theBoard"][obj['5']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['5'].worldPosition[0]
+                x.worldPosition[1]=obj['5'].worldPosition[1]
+                x.worldPosition[2]=obj['5'].worldPosition[2]
+                G["theBoard"][obj['5']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")
+
+        elif JUST_ACTIVATED in keyboard.inputs[bge.events.PAD6].queue :
+            if G["theBoard"][obj['6']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['6'].worldPosition[0]
+                x.worldPosition[1]=obj['6'].worldPosition[1]
+                x.worldPosition[2]=obj['6'].worldPosition[2]
+                G["theBoard"][obj['6']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")
+
+        elif JUST_ACTIVATED in keyboard.inputs[bge.events.PAD7].queue :
+            if G["theBoard"][obj['7']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['7'].worldPosition[0]
+                x.worldPosition[1]=obj['7'].worldPosition[1]
+                x.worldPosition[2]=obj['7'].worldPosition[2]
+                G["theBoard"][obj['7']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")
+
+        elif JUST_ACTIVATED in keyboard.inputs[bge.events.PAD8].queue :
+            if G["theBoard"][obj['8']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['8'].worldPosition[0]
+                x.worldPosition[1]=obj['8'].worldPosition[1]
+                x.worldPosition[2]=obj['8'].worldPosition[2]
+                G["theBoard"][obj['8']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")
+
+        elif JUST_ACTIVATED in keyboard.inputs[bge.events.PAD9].queue :
+            if G["theBoard"][obj['9']] == ' ':
+                x=G['x']
+                x, tx=check(x)
+                x.worldPosition[0]=obj['9'].worldPosition[0]
+                x.worldPosition[1]=obj['9'].worldPosition[1]
+                x.worldPosition[2]=obj['9'].worldPosition[2]
+                G["theBoard"][obj['9']] = G['x'] = x
+                G['count'] += 1
+                print(G['count'])
+            else:
+                print("Location is not empty. Specify other location")  
+
+        if  G['count'] >= 5:
+            if str(G["theBoard"][obj['7']]) == str(G["theBoard"][obj['8']]) == str(G["theBoard"][obj['9']]) != ' ':
+                winner(G["theBoard"][obj['7']])
+
+            elif str(G["theBoard"][obj['4']]) == str(G["theBoard"][obj['5']]) == str(G["theBoard"][obj['6']]) != ' ':
+                winner(G["theBoard"][obj['4']])
+
+            elif str(G["theBoard"][obj['1']]) == str(G["theBoard"][obj['2']]) == str(G["theBoard"][obj['3']]) != ' ':
+                winner(G["theBoard"][obj['1']])
+
+            elif str(G["theBoard"][obj['1']]) == str(G["theBoard"][obj['4']]) == str(G["theBoard"][obj['7']]) != ' ':
+                winner(G["theBoard"][obj['1']])
+
+            elif str(G["theBoard"][obj['2']]) == str(G["theBoard"][obj['5']]) == str(G["theBoard"][obj['8']]) != ' ':
+                winner(G["theBoard"][obj['2']])
+
+            elif str(G["theBoard"][obj['3']]) == str(G["theBoard"][obj['6']]) == str(G["theBoard"][obj['9']]) != ' ':
+                winner(G["theBoard"][obj['3']])
+
+            elif str(G["theBoard"][obj['1']]) == str(G["theBoard"][obj['5']]) == str(G["theBoard"][obj['9']]) != ' ':
+                winner(G["theBoard"][obj['1']])
+
+            elif str(G["theBoard"][obj['3']]) == str(G["theBoard"][obj['5']]) == str(G["theBoard"][obj['7']]) != ' ':
+                winner(G["theBoard"][obj['3']])
+
+            if G['count'] == 10:
+                obj["Plane"].worldPosition[2] = 0.20
+                GameOver =scene.addObject('GameOver')
+
+if __name__ == '__main__':
+    game()
+
+    if G['count'] == 9:
+        obj["Plane"].worldPosition[2] = 0.20
+        Draw = scene.addObject('Draw')
+        GameOver =scene.addObject('GameOver')
+
+#    if G['count'] == 9:
+#        obj["Plane"].worldPosition[2] = 0.20
+#        G['D'] = scene.addObject('Draw')
+#        G['G']=scene.addObject('GameOver')
+#        G['t'] = scene.addObject('Replay')
+#        if JUST_ACTIVATED in keyboard.inputs[bge.events.YKEY].queue:
+#            time.sleep(1)
+#            G.clear()
+#        bge.logic.restartGame()
+#        elif JUST_ACTIVATED in keyboard.inputs[bge.events.NKEY].queue:
+#            bge.logic.endGame()
+            
+#    if G['count'] == 10:
+#        obj["Plane"].worldPosition[2] = 0.20
+#        G['G']=scene.addObject('GameOver')
+#        G['t'] = scene.addObject('Replay')
+#        time.sleep(1)
+#        G.clear()
+#        bge.logic.restartGame()
+#        G['D'] = scene.addObject('Draw')
+        
+#    if G['count'] == 9:
+#        obj["Plane"].worldPosition[2] = 0.20
+##        if JUST_ACTIVATED in keyboard.inputs[bge.events.YKEY].queue:
+#        G['count'] += 1
+
+#        elif JUST_ACTIVATED in keyboard.inputs[bge.events.YKEY].queue:
+#            bge.logic.endGame()
